@@ -133,13 +133,13 @@ This is very fragile and inflexible code: it won't recognize SELECT or Select or
 
 The symbol := means 'is defined to be'. You could also read it as 'consists of' or 'contains' or 'is'.
 
-Text in single quotes is literal text. Usually grammars are very strict, and our grammar above will only recognize SELECT and FROM in all caps. We're going to relax that restriction: for us, any text in single quotes will be case-insensitive. Note also the literal asterisk '*' and comma ',' characters.
+Text in single quotes is literal text. Usually grammars are very strict, and our grammar above will only recognize SELECT and FROM in all caps. We're going to relax that restriction: for us, any text in single quotes will be case-insensitive. Note also the literal asterisk ```'*'``` and comma ```','``` characters.
 
 Text in angle brackets are rule names.
 
-The first grammar rule above, named <select statement>, says that a select statement is defined to be the literal word SELECT followed by attributes (which are described by another grammar rule) followed by the literal work FROM followed by table name (which is described by another grammar rule).
+The first grammar rule above, named ```<select statement>```, says that a select statement is defined to be the literal word SELECT followed by attributes (which are described by another grammar rule) followed by the literal work FROM followed by table name (which is described by another grammar rule).
 
-Let's agree that <string> is a primitive in our grammar notation: we know that it means a sequence of characters, and we've already agreed that strings in our SQL language are case-insensitive. We'll agree, too, that string won't contain whitespace (model and attribute names can't contain whitespace in Sequelize, either, nor can JavaScript variable names.)
+Let's agree that ```<string>``` is a primitive in our grammar notation: we know that it means a sequence of characters, and we've already agreed that strings in our SQL language are case-insensitive. We'll agree, too, that string won't contain whitespace (model and attribute names can't contain whitespace in Sequelize, either, nor can JavaScript variable names.)
 
 Finally, let's agree that the grammar is loose about whitespace. It expects at least one space character between 'words' where whitespace is needed, and will tolerate more whitespace: you can write spaces, tabs and newlines freely. So "FROM foo" and "FROM      foo" are both ok, and so is "attr1,attr2,  attr3  ,  attr4".
 
@@ -154,7 +154,7 @@ Finally, let's agree that the grammar is loose about whitespace. It expects at l
 
 > In that second line we'd have to write out all the valid characters: comma and ellipsis are not part of our grammar notation. Also, we'd need to invent some notation to indicate that the characters all have to be consecutive, with no whitespace.
 
-The symbol | means 'or'. According to the second grammar rule above, the <attributes> in a <select statement> can be either the literal '*' asterisk character, or a list of atrributes. And according to the third grammar rule above, a list of attributes can be a single <attribute name> or an <attribute name> followed by a literal ',' comma character, followed by an <attribute list>. This is a recursive definition.
+The symbol | means 'or'. According to the second grammar rule above, the ```<attributes>``` in a ```<select statement>``` can be either the literal ```*``` asterisk character, or a list of atrributes. And according to the third grammar rule above, a list of attributes can be a single ```<attribute name>``` or an ```<attribute name>``` followed by a literal ',' comma character, followed by an ```<attribute list>```. This is a recursive definition.
 
 > **Sidebar:**
 
